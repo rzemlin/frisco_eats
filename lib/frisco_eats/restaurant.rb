@@ -1,0 +1,3 @@
+class FriscoEats::Restaurant
+
+end
