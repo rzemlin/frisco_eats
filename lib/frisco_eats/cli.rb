@@ -13,8 +13,16 @@ class FriscoEats::CLI
 		#puts ""
 		#puts ""
 
-		#puts "Press Enter to get a highly reccommended selection of restaurants!" 
-	FriscoEats::Scraper.scrape_names
+		puts "Press Enter to get a highly reccommended selection of restaurants!" 
+	input = gets.strip
+	if input.empty?
+	    FriscoEats::Scraper.scrape_names
+	    else
+	    puts "Goodbye!"
+	    end
+
+
+	#FriscoEats::Scraper.scrape_names
     #list restaurants
     #ask for input
     #show desc
@@ -23,11 +31,11 @@ class FriscoEats::CLI
     end
 
 
-	def list_names
-		FriscoEats::Restaurant.all.each_with_index(1) do |name, index|
-			puts "#{index}.  #{restaurant.name}"
+	#def list_names
+		#FriscoEats::Restaurant.all.each_with_index(1) do |name, index|
+		#	puts "#{index}.  #{restaurant.name}"
 
-	end
+	#end
 
 
 end
