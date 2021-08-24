@@ -17,9 +17,23 @@ class FriscoEats::CLI
 	input = gets.strip
 	if input.empty?
 	    FriscoEats::Scraper.scrape_names
+	    list_restaurants
+	    details
 	    else
 	    puts "Goodbye!"
 	    end
+	end
+	    
+	    def details
+	    	puts"Select the number for the restaurant for more info"
+	    end
+
+        def list_restaurants
+        FriscoEats::Restaurant.all.each.with_index(1) do |restaurant, index|
+        puts "#{index}. #{restaurant.name}"
+        
+  end
+	    
 
 
 	#FriscoEats::Scraper.scrape_names

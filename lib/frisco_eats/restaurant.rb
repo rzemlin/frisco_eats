@@ -1,16 +1,22 @@
 class FriscoEats::Restaurant
-	attr_accessor :name, :number, :url, :address, :overview
+	attr_accessor :name, :price, :url, :overview
 	@@all = []
 
-	def initialize(att_hash)
-		att_hash.each do |key, value|
+	def initialize(attr_hash)
+		attr_hash.each do |key, value|
 			self.send("#{key}=", value)
 	    end
-	    save
+	    self.save
 	end
 
 	def save
 		@@all << self
+		self
+		
 	end
-	
+
+	def self.all
+		@@all
+	end
+
 end

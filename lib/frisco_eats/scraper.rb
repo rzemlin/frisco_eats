@@ -1,30 +1,26 @@
 class FriscoEats::Scraper
 
 	def self.scrape_names
-		
-		site = "https://sf.eater.com/maps/best-restaurants-san-francisco-38"
-		
+
+		site = "https://www.cntraveler.com/gallery/best-restaurants-in-san-francisco"
 		doc = Nokogiri::HTML (open(site))
 		
-		restaurant_card = doc.css("section.c-mapstack__card")
+		restaurant_card = doc.css("div.gallery-slide-caption")
 		
-		restaurant_name = restaurant_card.css("div.c-mapstack__card-hed h1")
-		#restaurant_name.each.with_index(1) do |name, index|
-		#	puts "#{{index}.  #{name.name}
-		
-		
-        restaurant_card.each do |card| 
-	      attributes = {
-		     name: card.css("div.c-mapstack__card-hed")[0].text,
-		     number: card.css("div.c-mapstack__info div.c-mapstack__phone-url a")[0].text,
-		     address: card.css("div.c-entry-content div.c-mapstack__address")[0].text,
-		     #url: card.css("div.c-mapstack__info a")[1]['href'],
-		     #overview: card.css("div.c-entry-content p")[25],
-	             }
-	        FriscoEats::Restaurant.new(attributes)
-	        binding.pry
+		restaurant_card.each do |restaurant|
+			
+			attributes = {
+              name: restaurant_card.css("span.gallery-slide-caption__hed-text")[0].text,
+              price: restaurant_card.css("div.gallery-slide-caption__detail")[0].text,
+              url: restaurant_card.css("div.gallery-slide-caption a")[0].attributes['href'].value,
+              overview: restaurant_card.css("div.gallery-slide-caption__dek-container p")[0].text 
+            }
+            restaurant = FriscoEats::Restaurant.new(attributes)
+
+            
+            end
         end
-    end
+    
 
 
 	def scrape_reviews
