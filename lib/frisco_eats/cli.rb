@@ -16,8 +16,9 @@ class FriscoEats::CLI
 		puts "Press Enter to get a highly reccommended selection of restaurants!" 
 	input = gets.strip
 	if input.empty?
-	    FriscoEats::Scraper.scrape_names
+	    FriscoEats::Scraper.scrape_restaurants
 	    list_restaurants
+	    binding.pry
 	    details
 	    else
 	    puts "Goodbye!"

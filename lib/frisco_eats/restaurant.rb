@@ -1,5 +1,5 @@
 class FriscoEats::Restaurant
-	attr_accessor :name, :price, :url, :overview
+	attr_accessor :name, :price, :url, :overview, :id
 	@@all = []
 
 	def initialize(attr_hash)
