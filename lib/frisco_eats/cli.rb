@@ -1,6 +1,13 @@
 class FriscoEats::CLI
 	
-	def start
+	def start 
+		greeting
+		scrape_names
+		list_names
+		menu
+	end
+	
+	def greeting
 		puts "\nWelcome to Frisco Eats!".colorize(:yellow)
 		#puts ""
 		#puts "Here you can find a selection of eateries ranging from"
@@ -12,28 +19,42 @@ class FriscoEats::CLI
 		#puts "They are all delicious!"
 		#puts ""
 		#puts ""
-
-		puts "Press Enter to get a highly reccommended selection of restaurants!" 
-	input = gets.strip
-	if input.empty?
-	    FriscoEats::Scraper.scrape_restaurants
-	    list_restaurants
-	    binding.pry
-	    details
-	    else
-	    puts "Goodbye!"
-	    end
 	end
-	    
-	    def details
-	    	puts"Select the number for the restaurant for more info"
-	    end
 
-        def list_restaurants
+	def scrape_names
+	    FriscoEats::Scraper.scrape_names  
+	end
+
+	def list_names
         FriscoEats::Restaurant.all.each.with_index(1) do |restaurant, index|
         puts "#{index}. #{restaurant.name}"
+    end
+    
+    def menu
+	    puts "Select the number corresponding to the restaurant for more info:"
+	    input = gets.strip.to_i
+	    if input == FriscoEats::Restaurant.id
+
+	    	puts "#{movie.review}"
+	    	puts "#{price}"
+	    	puts "#{url}"
+	    else
+	    puts "Please try another selection"
+	    menu
+	    end
+
+	    binding.pry
+
+	end
+
+
+
+
+	    #def details
+	    #	puts"Select the number for the restaurant for more info"
+	    #end
+
         
-  end
 	    
 
 
@@ -43,7 +64,7 @@ class FriscoEats::CLI
     #show desc
     #ask for another selection or exit
 
-    end
+   
 
 
 	#def list_names
@@ -51,6 +72,9 @@ class FriscoEats::CLI
 		#	puts "#{index}.  #{restaurant.name}"
 
 	#end
+
+end
+
 
 
 end

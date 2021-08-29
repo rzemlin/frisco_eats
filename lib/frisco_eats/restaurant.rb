@@ -11,8 +11,7 @@ class FriscoEats::Restaurant
 
 	def save
 		@@all << self
-		self
-		
+		self		
 	end
 
 	def self.all
