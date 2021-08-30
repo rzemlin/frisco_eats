@@ -6,7 +6,7 @@ class FriscoEats::Restaurant
 		attr_hash.each do |key, value|
 			self.send("#{key}=", value)
 	    end
-	    self.save
+	    self.save	    
 	end
 
 	def save
