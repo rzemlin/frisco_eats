@@ -1,8 +1,6 @@
 # FriscoEats
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/frisco_eats`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Frisco Eats. This gem gives the user a selection of some of San Francisco's finest eateries, and provides more information upon request
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run frisco Eats fork and clone this repository and run the 'bin/frisco_eats' executable file in your terminal. 
 
 ## Development
 
